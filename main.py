@@ -1,5 +1,8 @@
+from nauja_partija import nauja_partija
+
 # ('Zaidejas X pasirinkimas: ')))
 def tikrinimas1():
+
     if pasirinkimas1_zaidejo_X in a:
         a[a.index(pasirinkimas1_zaidejo_X)] = zaidejas1
         return pasirinkimas1_zaidejo_X
@@ -33,9 +36,6 @@ def LaimiX():
             == 'X' and b[1] == 'X' and c[1] == 'X' or a[2] == 'X' and b[2] == 'X' and c[2] == 'X':
         print("Zaidejas uz X laimejo ")
         return True
-
-def nauja_partija():
-    ...
 
 # Tikrinama ar lygiosios
 def Lygioios():
@@ -92,7 +92,8 @@ def tikrinimas2():
     else:
         print('Neteisingas pasirinkimas')
         # str(input(tikrinimas2('Zaidejas O pasirinkimas: ')))
-
+pasirinkimas1_zaidejo_X = ''
+pasirinkimas2_zaidejo_O = ''
 
 # Kintamieji + Masyvai
 zaidejas1 = 'X'
@@ -102,33 +103,42 @@ b = ['4', '5', '6']
 c = ['1', '2', '3']
 for x in a, b, c:
     print(x)
-while True:
-    # zaidimukas su tikrinimu ir stabdymu)
+def zaidimas():
+    while True:
+        # zaidimukas su tikrinimu ir stabdymu)
+        global pasirinkimas1_zaidejo_X
+        pasirinkimas1_zaidejo_X = str(input('Zaidejas X pasirinkimas: '))
+        tikrinimas1()
+        for x in a, b, c:
+            print(x)
 
-    pasirinkimas1_zaidejo_X = str(input('Zaidejas X pasirinkimas: '))
-    tikrinimas1()
-    for x in a, b, c:
-        print(x)
+        if LaimiX() == True:
+            nauja_partija()
+            break
 
-    if LaimiX() == True:
-        break
+        elif Lygioios() == True:
+            nauja_partija()
+            break
 
-    if Lygioios() == True:
-        break
+        elif Laimi_O() == True:
+            nauja_partija()
+            break
+        global pasirinkimas2_zaidejo_O
+        pasirinkimas2_zaidejo_O = str(input('Zaidejas O pasirinkimas: '))
+        tikrinimas2()
+        for x in a, b, c:
+            print(x)
 
-    if Laimi_O() == True:
-        break
+        if Laimi_O() == True:
+            nauja_partija()
+            break
 
-    pasirinkimas2_zaidejo_O = str(input('Zaidejas O pasirinkimas: '))
-    tikrinimas2()
-    for x in a, b, c:
-        print(x)
+        elif LaimiX() == True:
+            nauja_partija()
+            break
 
-    if Laimi_O() == True:
-        break
-
-    if LaimiX() == True:
-        break
-
-    if Lygioios() == True:
-        break
+        elif Lygioios() == True:
+            nauja_partija()
+            break
+if __name__ == "__main__":
+    zaidimas()
