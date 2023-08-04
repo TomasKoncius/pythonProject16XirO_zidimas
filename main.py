@@ -1,4 +1,4 @@
-from nauja_partija import nauja_partija
+import nauja_partija
 
 # ('Zaidejas X pasirinkimas: ')))
 def tikrinimas1():
@@ -103,7 +103,16 @@ b = ['4', '5', '6']
 c = ['1', '2', '3']
 for x in a, b, c:
     print(x)
+zaidejo_noras = ''
+def isvalo():
+    global a, b, c
+    a = ['7', '8', '9']
+    b = ['4', '5', '6']
+    c = ['1', '2', '3']
+
+
 def zaidimas():
+    isvalo()
     while True:
         # zaidimukas su tikrinimu ir stabdymu)
         global pasirinkimas1_zaidejo_X
@@ -113,15 +122,15 @@ def zaidimas():
             print(x)
 
         if LaimiX() == True:
-            nauja_partija()
+            nauja_partija.nauja_partija(zaidejo_noras=input("Norite naujos partyjos? Y \ N ?"))
             break
 
         elif Lygioios() == True:
-            nauja_partija()
+            nauja_partija.nauja_partija(zaidejo_noras = input("Norite naujos partyjos? Y \ N ?"))
             break
 
         elif Laimi_O() == True:
-            nauja_partija()
+            nauja_partija.nauja_partija(zaidejo_noras = input("Norite naujos partyjos? Y \ N ?"))
             break
         global pasirinkimas2_zaidejo_O
         pasirinkimas2_zaidejo_O = str(input('Zaidejas O pasirinkimas: '))
@@ -130,15 +139,15 @@ def zaidimas():
             print(x)
 
         if Laimi_O() == True:
-            nauja_partija()
+            nauja_partija.nauja_partija(zaidejo_noras = input("Norite naujos partyjos? Y \ N ?"))
             break
 
         elif LaimiX() == True:
-            nauja_partija()
+            nauja_partija.nauja_partija(zaidejo_noras = input("Norite naujos partyjos? Y \ N ?"))
             break
 
         elif Lygioios() == True:
-            nauja_partija()
+            nauja_partija.nauja_partija(zaidejo_noras = input("Norite naujos partyjos? Y \ N ?"))
             break
 if __name__ == "__main__":
     zaidimas()
